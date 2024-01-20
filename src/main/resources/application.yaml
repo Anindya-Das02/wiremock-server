@@ -1,0 +1,4 @@
+wiremock:
+  port: 9090
+  usingFilesUnderClasspath: BOOT-INF/wiremock
+  verbose: true
