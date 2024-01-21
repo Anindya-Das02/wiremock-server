@@ -3,9 +3,20 @@
 A wiremock standalone server (spring boot) with file based request matching for API testing.
 
 #### Features:
-- Easy File based request & response matching.
+- Easy File based request & response matching. No java coding required.
 - Matched file & response definition logging.
 - Standalone server.
+
+#### How to use:
+1. Create a json file with request mappings (see example in code) & keep it inside `src/resources/BOOT-INF/wiremock/mappings/*` directory. 
+2. Create a response json file containing json response-body (to be sent). Keep this response json file inside `src/resources/BOOT-INF/wiremock/__files/*` directory.
+3. You can use various request matching strategies to match incoming request, such as `matchesJsonPath`, `headers`, `equalToJson`, & more. _see references below_
+4. To change wiremock server port or files location in classpath change the below properties in `application.yaml` file appropriately.
+```yaml
+wiremock:
+  port: <your wiremock port>
+  usingFilesUnderClasspath: <your classpath>
+```
 
 #### Console Output:
 ```log
@@ -66,5 +77,7 @@ HTTP/1.1 200
 Content-Type: [application/json]
 Matched-Stub-Id: [f231bb4c-4a7b-4c97-9085-bd56911235b8]
 
-
 ```
+
+#### References:
+- [wiremock request matching docs](https://wiremock.org/docs/request-matching/)

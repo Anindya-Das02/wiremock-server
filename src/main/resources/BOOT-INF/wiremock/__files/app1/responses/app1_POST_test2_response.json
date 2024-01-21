@@ -1,0 +1,14 @@
+{
+  "name" : "Anindya Das",
+  "empId" : "EXPR-ES30012103",
+  "age" : 25,
+  "dept" : "swe",
+  "skills" : [
+    "java",
+    "spring boot",
+    "microservices"
+  ],
+  "manager" : "Karan P",
+  "managerId" : "EXPR-EM30056117",
+  "address" : "B#32, flour ipsum, India"
+}

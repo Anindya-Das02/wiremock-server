@@ -1,0 +1,22 @@
+{
+  "id" : "a7afa79a-7a21-44d0-b079-040892614256",
+  "request": {
+    "method": "POST",
+    "url": "/test/person-details",
+    "headers": {
+      "X-APP-TRX-ID": {
+        "equalTo": "trx-100",
+        "caseInsensitive": true
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "app1/responses/app1_POST_header_test3_response.json",
+    "headers": {
+      "Content-Type": "application/json",
+      "X-APP-TRX-ID" : "trx-100",
+      "response-from" : "mock-server"
+    }
+  }
+}
