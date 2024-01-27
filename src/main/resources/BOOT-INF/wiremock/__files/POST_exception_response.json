@@ -1,0 +1,6 @@
+{
+  "error" : "$error",
+  "status" : "$status",
+  "uuid" : "$uuid",
+  "errorMessage" : "$errorMessage"
+}

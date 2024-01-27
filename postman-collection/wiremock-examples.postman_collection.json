@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "d3187b7a-d1d3-4ce9-af6d-9e3463a14106",
+		"name": "wiremock-examples",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17087553"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-APP-TRX-ID",
+						"value": "trx-100",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"empId\" : \"SED045\",\r\n    \"name\" : \"John Doe\",\r\n    \"emailId\" : \"john.doe@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/test/employee-details",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"test",
+						"employee-details"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

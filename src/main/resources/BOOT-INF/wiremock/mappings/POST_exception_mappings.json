@@ -1,8 +1,8 @@
 {
-  "id" : "a7afa79a-7a21-44d0-b079-040892614256",
+  "id" : "bfa530f8-dd12-4432-b02f-2cf0883da393",
   "request": {
     "method": "POST",
-    "url": "/test/person-details",
+    "urlPattern": "/test/([a-z]+)-details",
     "headers": {
       "X-APP-TRX-ID": {
         "equalTo": "trx-100",
@@ -12,15 +12,20 @@
   },
   "response": {
     "status": 200,
-    "bodyFileName": "app1/responses/app1_POST_header_test3_response.json",
+    "bodyFileName": "POST_exception_response.json",
     "headers": {
       "Content-Type": "application/json",
       "X-APP-TRX-ID" : "trx-100",
       "response-from" : "mock-server"
     },
-    "transformers" : ["response-fill-using-param-transformer"],
+    "transformers" : [
+      "response-fill-using-param-transformer"
+    ],
     "transformerParameters" : {
-      "$name" : "abc"
+      "$error" : "Bad Request",
+      "$status" : "400",
+      "$uuid" : "8de32766-586d-448e-8c8e",
+      "$errorMessage" : "some error message"
     }
   }
 }

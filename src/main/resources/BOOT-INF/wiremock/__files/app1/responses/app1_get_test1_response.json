@@ -1,8 +1,0 @@
-{
-  "message" : "hello world",
-  "status" : 200,
-  "meta" : {
-    "type" : "wiremock",
-    "date" : "20-jan-2024"
-  }
-}
