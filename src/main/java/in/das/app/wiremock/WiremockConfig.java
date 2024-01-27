@@ -2,6 +2,8 @@ package in.das.app.wiremock;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.common.ConsoleNotifier;
+import in.das.app.wiremock.extensions.ResponseFillUsingParamTransformer;
+import in.das.app.wiremock.extensions.ResponseFillUsingRequestTransformer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -30,6 +32,10 @@ public class WiremockConfig {
                 .port(wireMockPort)
                 .usingFilesUnderClasspath(filesClasspath)
                 .notifier(new ConsoleNotifier(wireMockVerbose))
+                .extensions(
+                        new ResponseFillUsingRequestTransformer(),
+                        new ResponseFillUsingParamTransformer()
+                )
                 .jettyAcceptors(4)
                 .jettyAcceptQueueSize(100)
                 .asynchronousResponseEnabled(true)
@@ -39,6 +45,7 @@ public class WiremockConfig {
 
         log.info("starting wiremock server in port:{}", wireMockPort);
         server.start();
+        log.info("Wiremock server up & running...");
         return server;
     }
 }

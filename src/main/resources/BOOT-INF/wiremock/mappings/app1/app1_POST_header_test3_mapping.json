@@ -17,6 +17,10 @@
       "Content-Type": "application/json",
       "X-APP-TRX-ID" : "trx-100",
       "response-from" : "mock-server"
+    },
+    "transformers" : ["response-fill-using-param-transformer"],
+    "transformerParameters" : {
+      "$name" : "abc"
     }
   }
 }
