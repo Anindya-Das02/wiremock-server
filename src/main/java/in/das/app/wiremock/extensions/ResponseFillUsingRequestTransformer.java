@@ -67,11 +67,12 @@ public class ResponseFillUsingRequestTransformer implements ResponseTransformerV
         }
 
         for(String node : nodesToReplace){
-            if(requestNode.has(node.substring(1))){
-                String nodeValue = requestNode.get(node.substring(1)).textValue();
-                responseJson = responseJson.replaceAll("\\$" + node.substring(1), nodeValue);
+            node = node.substring(2, node.length()-1);
+            if(requestNode.has(node)){
+                String nodeValue = requestNode.get(node).textValue();
+                responseJson = responseJson.replaceAll("\\$\\{" + node + "}", nodeValue);
             } else {
-                log.error("No substitution found for \"{}\" in request", node);
+                log.error("No substitution found for \"${{}}\" in request", node);
             }
         }
         return responseJson;

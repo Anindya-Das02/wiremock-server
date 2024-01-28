@@ -18,9 +18,13 @@
       "X-APP-TRX-ID" : "trx-100",
       "response-from" : "mock-server"
     },
-    "transformers" : ["response-fill-using-param-transformer"],
+    "transformers" : [
+      "response-fill-using-param-transformer"
+    ],
     "transformerParameters" : {
-      "$name" : "abc"
+      "error" : "Bad Request",
+      "status" : "400",
+      "errorMessage" : "some error message"
     }
   }
 }

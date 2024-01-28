@@ -1,3 +1,5 @@
 {
-  "name" : "$name"
+  "error" : "${error}",
+  "status" : "${status}",
+  "errorMessage" : "${errorMessage}"
 }
