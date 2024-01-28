@@ -19,12 +19,13 @@
       "response-from" : "mock-server"
     },
     "transformers" : [
-      "response-fill-using-param-transformer"
+      "response-type-transformer"
     ],
     "transformerParameters" : {
       "error" : "Bad Request",
-      "status" : "400",
-      "errorMessage" : "some error message"
+      "status" : 400,
+      "errorMessage" : "some error message",
+      "mock" : true
     }
   }
 }

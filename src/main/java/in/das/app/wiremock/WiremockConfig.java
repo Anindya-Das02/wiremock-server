@@ -4,6 +4,7 @@ import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.common.ConsoleNotifier;
 import in.das.app.wiremock.extensions.ResponseFillUsingParamTransformer;
 import in.das.app.wiremock.extensions.ResponseFillUsingRequestTransformer;
+import in.das.app.wiremock.extensions.TypeTransformer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -34,7 +35,8 @@ public class WiremockConfig {
                 .notifier(new ConsoleNotifier(wireMockVerbose))
                 .extensions(
                         new ResponseFillUsingRequestTransformer(),
-                        new ResponseFillUsingParamTransformer()
+                        new ResponseFillUsingParamTransformer(),
+                        new TypeTransformer()
                 )
                 .jettyAcceptors(4)
                 .jettyAcceptQueueSize(100)

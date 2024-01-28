@@ -1,5 +1,6 @@
 {
   "error" : "${error}",
-  "status" : "${status}",
-  "errorMessage" : "${errorMessage}"
+  "status" : "${status|int}",
+  "errorMessage" : "${errorMessage}",
+  "mock" : "${mock|boolean}"
 }
