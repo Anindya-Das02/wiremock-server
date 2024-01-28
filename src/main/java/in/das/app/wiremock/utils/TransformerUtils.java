@@ -15,7 +15,7 @@ public interface TransformerUtils {
 
         if(node.isObject()){
             node.fields().forEachRemaining(entry -> {
-                if(entry.getValue().isTextual() && entry.getValue().textValue().startsWith("$")){
+                if(entry.getValue().isTextual() && entry.getValue().textValue().startsWith("${") && entry.getValue().textValue().endsWith("}")){
                     arr.add(entry.getValue().textValue());
                 }
                 else if(entry.getValue().isObject() || entry.getValue().isArray()){

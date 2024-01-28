@@ -1,18 +1,18 @@
 package in.das.app.wiremock.extensions;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.tomakehurst.wiremock.extension.ResponseTransformerV2;
-import com.github.tomakehurst.wiremock.http.Response;
-import com.github.tomakehurst.wiremock.stubbing.ServeEvent;
-import in.das.app.wiremock.utils.TransformerUtils;
-import lombok.extern.slf4j.Slf4j;
+        import com.fasterxml.jackson.core.JsonProcessingException;
+        import com.fasterxml.jackson.databind.JsonNode;
+        import com.fasterxml.jackson.databind.ObjectMapper;
+        import com.github.tomakehurst.wiremock.extension.ResponseTransformerV2;
+        import com.github.tomakehurst.wiremock.http.Response;
+        import com.github.tomakehurst.wiremock.stubbing.ServeEvent;
+        import in.das.app.wiremock.utils.TransformerUtils;
+        import lombok.extern.slf4j.Slf4j;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+        import java.io.IOException;
+        import java.util.HashMap;
+        import java.util.List;
+        import java.util.Map;
 
 @Slf4j
 public class ResponseFillUsingParamTransformer implements ResponseTransformerV2 {
@@ -21,7 +21,10 @@ public class ResponseFillUsingParamTransformer implements ResponseTransformerV2 
 
     @Override
     public Response transform(Response response, ServeEvent serveEvent) {
-        Map<String, Object> map = new HashMap<>(serveEvent.getTransformerParameters());
+        Map<String, Object> map = new HashMap<>();
+        serveEvent.getTransformerParameters().forEach((param,obj) -> {
+            map.put("${" + param + "}", obj);
+        });
         JsonNode responseJson;
         try {
             responseJson = mapper.readValue(response.getBody(), JsonNode.class);
@@ -57,9 +60,9 @@ public class ResponseFillUsingParamTransformer implements ResponseTransformerV2 
         }
         for(String node : nodesToReplace){
             if(paramMap.get(node) instanceof String) {
-                responseJson = responseJson.replaceAll("\\$" + node.substring(1), (String) paramMap.get(node));
+                responseJson = responseJson.replaceAll("\\$\\{" + node.substring(2, node.length()-1) + "}", (String) paramMap.get(node));
             } else {
-                log.error("complex (not string) value found for parameter: \"{}\", substitution skipped", node);
+                log.error("complex (not string) value found for parameter: \"{}\", substitution skipped", node.substring(2, node.length()-1));
             }
         }
         return responseJson;
